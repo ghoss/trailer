@@ -1,0 +1,118 @@
+/*=============================================================================
+//
+// Trailer - The Ultimate Railroad Diagram Generator
+//
+// File:		trailer.css
+// Description:	Style sheet defining the diagram layout
+// Author:		Guido Hoss
+// Version:		1.0.0
+// Date:		03-May-2016
+//
+//=============================================================================
+// Copyright (C) 2016 by Guido Hoss
+//
+// Trailer is free software: you can redistribute it and/or 
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation, either version 3
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public
+// License along with this program.  If not, see
+// <http://www.gnu.org/licenses/>.
+//
+// Git repository home: <https://github.com/ghoss/Trailer>
+//=============================================================================
+*/
+
+.rr_wrapper {
+	display: inline-block;
+	position: absolute;
+}
+
+.rr_terminal, .rr_nonterminal, .rr_line, .rr_specterminal {
+	display: inline-block;
+	position: absolute;
+	left: 0px;
+	z-index: 1;
+}
+
+/* Terminal and non-terminal symbols, common attributes */
+.rr_terminal, .rr_nonterminal, .rr_specterminal {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12pt;
+	background: #ffffff;
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+	padding: 5px 10px 5px 10px;
+	vertical-align: -25%;
+	white-space: nowrap;
+}
+
+/* Terminal symbol ("string") */
+.rr_terminal {
+	font-weight: bold;
+	background-color: #ffdddd;
+	padding: 5px 5px 5px 5px;
+}
+
+/* Non-terminal symbol */
+.rr_nonterminal {
+	font-style: italic;
+	padding: 5px 10px 5px 10px;
+}
+
+/* Special terminal symbol */
+.rr_specterminal {
+	padding: 5px 10px 5px 10px;
+}
+
+/* Connecting line */
+.rr_line {
+	border-bottom: 2px solid black;
+	width: 10px;
+	top: 0px;
+	z-index: 0;
+}
+
+/* Vertical branch, common attributes */
+.rr_line_volu, .rr_line_voll, .rr_line_voru, .rr_line_vorl {
+	position: absolute;
+	width: 10px;
+	font-family: "sans-serif";
+	font-size: 12px;
+	text-indent: -7px;
+	line-height: 10px;
+}
+
+/* Vertical option branch, left upper */
+.rr_line_volu {
+	border-top: 2px solid black;
+	border-right: 2px solid black;
+}
+
+/* Vertical option branch, left lower */
+.rr_line_voll {
+	border-left: 2px solid black;
+	border-bottom: 2px solid black;
+	border-bottom-left-radius: 20px;
+	left: 10px;
+}
+
+/* Vertical option branch, right upper */
+.rr_line_voru {
+	border-left: 2px solid black;
+	border-top: 2px solid black;
+}
+
+/* Vertical option branch, right lower */
+.rr_line_vorl {
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom-right-radius: 20px;
+}
