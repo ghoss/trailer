@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>Trailer &mdash; The Ultimate Railroad Diagram Generator</title>
+<script src="jquery-2.2.3.min.js"></script>
+<script src="trailer-1.0.0.min.js"></script>
+<link rel="stylesheet" href="trailer.css">
+<script>	
+	function callback(data) {
+		// Create wrapper for this diagram
+		var diagram = $("<div>");
+
+		// Create header and footer
+		var header = $("<div>", {class: "my_title"});
+		header.html(data.symbol);	
+		var footer = $("<div>", {class: "my_footer"});
+		footer.html(data.rule);
+	
+		// Append everything to wrapper
+		data.diagram.addClass("my_body");
+		$(diagram).append(header, data.diagram, footer);
+		
+		// And append wrapper to target location in document
+		$(data.target, data.targetDoc).append(diagram);
+	}
+	
+	$(function () {
+		$("#loadexample").click(function() {
+			$("#grammar").val(
+				"grammar=(statement)+;\n" +
+				"statement = identifier, '=', rule, ';';\n" +
+				"rule = term,(('|'|','),term)*;\n" +
+				"term = enclosed|identifier|string|underscore;\n" +
+				"identifier = alphanumeric,(alphanumeric|underscore)+;\n" +
+				"alphanumeric = ?A..Z?|?a..z?|?0..9?;\n" +
+				"underscore = '_';\n" +
+				"string = \"'\",?character string?,\"'\";\n" +
+				"enclosed = '(',rule,')',('+'|'*'|'?'|_);\n"
+			);
+		});
+		
+		$("#submit").click(function() {
+			var w = window.open("grammar.html");
+			w.onload = function() {
+				var e = new EBNF();
+				e.display($("#grammar").val(), "#diagram", this.document);
+			}			
+		});
+	});
+</script>
+<style>
+h1, h2 {
+	font-family: "Helvetica", "Arial", "sans-serif";
+}
+
+.lr {
+	float: left;
+	width: 48%;
+	border: 1px solid #cccccc;
+	padding: 0px 10px 0px 10px;
+	height: 470px;
+	background-color: #ffffdd;
+}
+
+.f {
+	padding: 10px 10px 0px 10px;	
+	clear: both;
+}
+
+#grammar {
+	width: 100%;
+	height: 300px;
+	font-size: 12pt;
+	font-family: "Courier", "Courier New", "monospace";
+	padding: 5px;
+}
+
+.button {
+	font-size: 12pt;
+}
+
+#diagram {
+	padding: 5px 10px 0px 10px;
+	clear: both;
+}
+
+dd {
+	font-size: 11pt;
+	font-family: "Courier", "Courier New", "monospace";
+}
+
+dt {
+	font-size: 11pt;
+	font-family: "Helvetica", "Arial", "sans-serif";	
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+</style>
+</head>
+<body>
+<h1>Trailer &ndash; The Ultimate Railroad Diagram Generator</h1>
+<p><b>Trailer</b> is a Javascript library for creating <i>railroad diagrams</i> (also known as "syntax diagrams"), from context-free grammars specified in EBNF ("<u>E</u>xtended <u>B</u>ackus-<u>N</u>aur <u>F</u>orm").</p>
+<div>
+<div class="lr">
+<h2>Grammar Specification:</h2>
+<p><a href="#" id="loadexample">Load Example</a></p>
+<form method="POST">
+<textarea id="grammar">
+</textarea>
+<p><input id="submit" class="button" type="button" value="Submit" />&nbsp;&nbsp;<input class="button" type="reset" /></p>
+</form>
+</div>
+<div class="lr">
+<h2>Quick Reference:</h2>
+<dt>Statements:</dt>
+<dd>symbol = rule ;</dd>
+<dt>Strings (Terminals):</dt>
+<dd>"string" (or 'string')</dd>
+<dt>Identifiers (Non-Terminals):</dt>
+<dd>ABCabc0-9</dd>
+<dd>' string '</dd>
+<dt>Sequence:</dt>
+<dd>term , term , ...</dd>
+<dt>Choice:</dt>
+<dd>term | term | ...</dd>
+<dt>Grouping:</dt>
+<dd>( simple-group )</dd>
+<dt>Repetitions:</dt>
+<dd>( zero-or-many )*</dd>
+<dd>( at-least-once )+</dd>
+<dd>( zero-or-once )?</dd>
+</div>
+</div>
+</body>
+</html>
