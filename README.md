@@ -6,4 +6,6 @@
 
 **Trailer** is open-source software under the [GPLv3](http://www.gnu.org/licenses/quick-guide-gplv3.en.html) license.
 
-
+##Resources
+ * [Demo Page](http://ghoss.github.io/demo.html) &mdash; Generate syntax diagrams online!
+ * [Downloads](https://github.com/ghoss/trailer/releases)
