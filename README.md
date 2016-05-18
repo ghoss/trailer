@@ -9,3 +9,4 @@
 ##Resources
  * [Demo Page](http://ghoss.github.io/trailer/demo.html) &mdash; Generate syntax diagrams online!
  * [Downloads](https://github.com/ghoss/trailer/releases)
+ * [Installation](https://github.com/ghoss/trailer/wiki/Installation)
